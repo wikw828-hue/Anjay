@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Untuk Kamu 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #ffc0cb, #ffe4e1);
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      margin-top: 100px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+    }
+
+    /* animasi masuk */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* efek hati jatuh */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: pink;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Hai Kamu 🌸</h1>
+  <p>Aku udah lama pengen bilang ini...</p>
+  <p>Sejak kenal kamu, semuanya terasa lebih indah.</p>
+  <p>Kamu selalu bikin aku senyum 😊</p>
+
+  <h2>Mau nggak kamu jadi pacar aku? 💖</h2>
+
+  <button id="yes" onclick="iya()">Iya 💕</button>
+  <button id="no" onclick="tidak()">Tidak 🙂</button>
+
+  <h3 id="hasil"></h3>
+</div>
+
+<!-- musik -->
+<audio autoplay loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// jawaban
+function iya() {
+  document.getElementById("hasil").innerHTML =
+    "Makasih ya 💖 Aku bakal jaga ini baik-baik 😊";
+}
+
+function tidak() {
+  document.getElementById("hasil").innerHTML =
+    "Nggak apa-apa 🙂 Makasih udah jujur ya.";
+}
+
+// buat hati jatuh
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+// generate terus
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
